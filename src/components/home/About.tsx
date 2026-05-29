@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 export default function About() {
   const stats = [
     { value: "2+", label: "Года опыта" },
@@ -13,7 +14,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-24 px-6 min-h-screen">
       <div className="max-w-5xl mx-auto">
 
         {/* Заголовок */}
@@ -24,37 +25,36 @@ export default function About() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-          {/* Карточка 1 — текст + статистика */}
-          <div className="lg:col-span-2 gradient-border rounded-2xl bg-neutral-900 p-8">
-            <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
-              <p>Привет! Я Алексей, Full-Stack разработчик из Москвы.</p>
-              <p>Разрабатываю современные веб-приложения на React и Next.js. Люблю чистый код и продуманный дизайн.</p>
-              <p>Работаю с клиентами напрямую — без лишних посредников. Ценю чёткие задачи и честные дедлайны.</p>
-            </div>
-
-            {/* Статистика */}
-            <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-neutral-700">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-3xl font-bold text-[#D7263D]">{stat.value}</div>
-                  <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
-                </div>
-              ))}
+          <div className="gradient-border-hover lg:col-span-2 rounded-2xl">
+            <div className="bg-neutral-900 rounded-2xl p-8 h-full">
+              <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+                <p>Привет! Я Алексей, Full-Stack разработчик из Красноярска.</p>
+                <p>Разрабатываю много классных вещей: Лендинги, веб-приложения и т.д. Люблю чистый код и продуманный дизайн.</p>
+                <p>Работаю с клиентами напрямую — без лишних посредников. Ценю чёткие задачи и честные дедлайны.</p>
+              </div>
             </div>
           </div>
+          
 
           {/* Карточка 2 — фото */}
-          <div className="gradient-border rounded-2xl bg-neutral-900 p-4 flex flex-col">
-            <div className="flex-1 bg-neutral-800 rounded-xl min-h-64 flex items-center justify-center">
-              <span className="text-gray-500 text-sm">Фото скоро</span>
+          <div className="gradient-border-hover rounded-2xl">
+            <div className="bg-neutral-900 rounded-2xl p-2 flex flex-col h-full">
+              <div className="relative h-72 bg-neutral-800 rounded-xl min-h-64 flex items-center justify-center">
+                <Image
+                  src="/cat.jpg"
+                  alt="Алексей Воробьев"
+                  fill
+                  className="object-cover rounded-2xl"                
+                />
+              </div>
+              <p className="text-xs text-gray-500 text-center mt-3 italic">Мистер кэт</p>
             </div>
-            <p className="text-xs text-gray-500 text-center mt-3 italic">
-              Алексей Воробьев, Full-Stack разработчик
-            </p>
           </div>
+            
 
           {/* Карточка 3 — Tech Stack */}
-          <div className="lg:col-span-3 gradient-border rounded-2xl bg-neutral-900 p-8">
+          <div className="gradient-border-hover rounded-2xl lg:col-span-3">
+            <div className="lg:col-span-3 rounded-2xl bg-neutral-900 p-8">
             <h3 className="text-white font-semibold text-lg mb-6">Tech Stack</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {techStack.map((group) => (
@@ -76,6 +76,8 @@ export default function About() {
               ))}
             </div>
           </div>
+          </div>
+          
 
         </div>
       </div>

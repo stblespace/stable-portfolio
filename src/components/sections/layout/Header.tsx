@@ -42,7 +42,7 @@ export function Header() {
 
   return (
     <header className={`fixed top-4 left-6 right-6 z-50 transition-all duration-300`}>
-      <nav className={`relative gradient-border mx-auto px-6 rounded-full flex items-center justify-between bg-[#02182B]/80 backdrop-blur-md transition-all duration-300 ${isCompact ? 'max-w-2xl py-3 shadow-xl' : 'max-w-full py-3'
+      <nav className={`relative gradient-border mx-auto px-6 rounded-full flex items-center justify-between bg-[#00000]/80 backdrop-blur-md transition-all duration-300 ${isCompact ? 'max-w-2xl py-3 shadow-xl' : 'max-w-full py-3'
         }`}>
         {/*Left Block (Name)*/}
         <span className="text-white font-semibold text-lg pl-2">
