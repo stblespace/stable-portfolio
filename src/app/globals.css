@@ -28,6 +28,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.font-press-start {
+  font-family: var(--font-press-start);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
 .gradient-border {
   position: relative;
   z-index: 0;
@@ -93,3 +101,10 @@ body {
 .glow-animate {
   animation: glow-pulse 10s ease-in-out infinite;
 }
+
+@keyframes pulse {
+  50% {
+    opacity: 0.1;
+  }
+}
+

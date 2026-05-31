@@ -1,14 +1,15 @@
 "use client";
 import { NextParticles, NextParticlesProvider } from "@tsparticles/nextjs";
 import { ParticlesBackground } from "../effects/fire";
+import Contact from "../sections/Contact";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden flex items-start justify-center px-6 min-h-screen"
+    <section className="relative overflow-hidden flex items-start justify-center px-6 mt-36 min-h-screen"
     style={{ paddingTop: 'var(--navbar-height)' }}>
       <ParticlesBackground/>
 
-      <div className="absolute inset-0 -z-10 flex items-center justify-center">
+      <div className="absolute inset-0 -z-10 flex items-center justify-center mb-30">
           <div className="glow-animate w-[600px] h-48 bg-[#D7263D]/30 blur-[80px] rounded-full" />
           <div className="absolute w-72 h-32 bg-[#ff6b7a]/40 blur-[60px] rounded-full" />
       </div>
@@ -33,7 +34,7 @@ export function Hero() {
         </h2>
 
         {/* Описание */}
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-64">
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-64 ">
           Создаю цифровые продукты которые работают. 
           Специализируюсь на веб-разработке и мобильных приложениях.
         </p>

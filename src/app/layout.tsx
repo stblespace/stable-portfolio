@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/sections/layout/Footer";
 import Script from "next/script";
@@ -11,6 +11,12 @@ const inter = Inter({
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
+  subsets: ["latin", "cyrillic"],
+})
+
+const pressStart = Press_Start_2P({
+  variable: "--font-press-start",
+  weight: "400",
   subsets: ["latin", "cyrillic"],
 })
 
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${montserrat.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${pressStart.variable} h-full antialiased`}
     >
       <head>
         <Script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@3/tsparticles.engine.min.js" strategy="beforeInteractive"/>
