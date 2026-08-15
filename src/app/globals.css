@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/*
+  Брейкпойнты для больших мониторов (Full HD/2K/4K на 27").
+  Важно: Tailwind v4 всегда генерирует media-запросы для кастомных
+  (не встроенных) брейкпойнтов ОТДЕЛЬНЫМ блоком ПЕРЕД блоком встроенных
+  sm/md/lg/xl/2xl — независимо от их числового значения и от того, в каком
+  @theme-блоке они объявлены. Поэтому официальный 2xl (1536px) никогда
+  нельзя комбинировать с 3xl/4xl на одном свойстве: 2xl-класс окажется
+  ниже по каскаду и при равной специфичности всегда победит, даже на
+  экране 2560px. Решение — завести свой брейкпойнт "xxl" на той же
+  отметке 1536px: он попадает в ту же кастомную группу, что и 3xl/4xl,
+  и сортируется среди них корректно (1536 → 1920 → 2560).
+*/
+@theme {
+  --breakpoint-xxl: 1536px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ededed;
+  --accent: #6366f1;
+  --navbar-height: 100px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-montserrat);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #EAE4D3;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.font-press-start {
+  font-family: var(--font-press-start);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+/* Progressive blur on carousel project screenshots: strong at bottom → clear near mid */
+.project-card-image-blur {
+  -webkit-mask-image: linear-gradient(
+    to top,
+    #000 0%,
+    #000 28%,
+    rgba(0, 0, 0, 0.7) 38%,
+    transparent 48%
+  );
+  mask-image: linear-gradient(
+    to top,
+    #000 0%,
+    #000 28%,
+    rgba(0, 0, 0, 0.7) 38%,
+    transparent 48%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.gradient-border {
+  position: relative;
+  z-index: 0;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #D7263D, #13552a, #a01e2e, #ffffff);
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gradient-wave 4s linear infinite;
+  z-index: -1;
+}
+
+.gradient-border-hover {
+  position:relative;
+  isolation: isolate;
+}
+
+.gradient-border-hover::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #D7263D, #13552a, #a01e2e, #ffffff);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: gradient-wave 4s linear infinite;
+}
+
+.gradient-border-hover:hover::before {
+  opacity: 1;
+}
+
+@keyframes gradient-wave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }  
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1.0;
+    transform: scale(1.2);
+  }
+}
+
+.glow-animate {
+  animation: glow-pulse 10s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
